@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mediva Care – Affordable Generic Medicines</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #0a7c6e;
+    --teal-light: #0fa88f;
+    --teal-pale: #e6f7f5;
+    --mint: #b5ede4;
+    --dark: #0d1f1c;
+    --charcoal: #1e3530;
+    --text: #2c4a44;
+    --muted: #6b8f89;
+    --white: #f8fefd;
+    --accent: #ff6b3d;
+    --gold: #f0c040;
+    --card-bg: #ffffff;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(248,254,253,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(10,124,110,0.12);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.1rem;
+  }
+  .logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex; gap: 2rem; align-items: center;
+  }
+  nav ul a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--teal-light) !important; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 8vw 80px;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -10vw; top: -10vh;
+    width: 70vw; height: 90vh;
+    background: radial-gradient(ellipse at 70% 30%, rgba(11,168,143,0.12) 0%, transparent 65%),
+                radial-gradient(ellipse at 30% 80%, rgba(10,124,110,0.07) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal-pale);
+    border: 1px solid rgba(10,124,110,0.25);
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--teal); letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .badge-dot {
+    width: 7px; height: 7px;
+    background: var(--teal-light); border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 1.15;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2.2rem;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: white;
+    border: none; cursor: pointer;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-size: 0.95rem; font-weight: 600;
+    font-family: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(10,124,110,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(10,124,110,0.4); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--teal);
+    border: 2px solid var(--teal);
+    cursor: pointer;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-size: 0.95rem; font-weight: 600;
+    font-family: inherit;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { background: var(--teal); color: white; transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .stat-item { }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--teal);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    display: flex; justify-content: center; align-items: center;
+    animation: fadeIn 1s 0.3s ease both;
+  }
+  .pill-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 24px 80px rgba(10,124,110,0.14), 0 4px 20px rgba(0,0,0,0.05);
+    width: 100%; max-width: 400px;
+    position: relative;
+    border: 1px solid rgba(10,124,110,0.1);
+  }
+  .price-compare {
+    margin: 1rem 0;
+  }
+  .med-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+  }
+  .med-row.branded { background: #fff5f2; border: 1px solid #ffddd4; }
+  .med-row.generic { background: var(--teal-pale); border: 1px solid rgba(10,124,110,0.2); }
+  .med-name { font-weight: 600; font-size: 0.9rem; }
+  .med-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .med-price { font-weight: 700; font-size: 1.1rem; }
+  .med-row.branded .med-price { color: #cc4400; }
+  .med-row.generic .med-price { color: var(--teal); }
+  .save-tag {
+    background: var(--gold);
+    color: #5a3c00;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .vs-divider {
+    text-align: center; color: var(--muted);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 0.3rem 0;
+  }
+  .pill-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--dark); margin-bottom: 0.5rem;
+  }
+  .floating-badge {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+    font-size: 0.78rem; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(10,124,110,0.12);
+  }
+  .floating-badge.top { top: -18px; right: -18px; color: var(--teal); }
+  .floating-badge.bot { bottom: -18px; left: -18px; color: var(--accent); }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--dark);
+    padding: 1.4rem 8vw;
+    display: flex; align-items: center; justify-content: space-around;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem; font-weight: 500;
+  }
+  .trust-icon { font-size: 1.2rem; }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 100px 8vw; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 0.8rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  h2 em { font-style: normal; color: var(--teal); }
+  .section-sub {
+    font-size: 1rem; color: var(--muted); line-height: 1.7;
+    max-width: 540px; margin-bottom: 3rem;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--teal-pale); }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .step-card {
+    background: white;
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(10,124,110,0.08);
+    border: 1px solid rgba(10,124,110,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative;
+  }
+  .step-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(10,124,110,0.15); }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 700;
+    color: rgba(10,124,110,0.1);
+    position: absolute; top: 1rem; right: 1.4rem;
+    line-height: 1;
+  }
+  .step-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.2rem;
+  }
+  .step-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--dark); margin-bottom: 0.6rem;
+  }
+  .step-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── MEDICINES ── */
+  .medicines-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .med-card {
+    background: white;
+    border-radius: 18px;
+    padding: 1.8rem;
+    border: 1px solid #e8f5f3;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    cursor: pointer;
+  }
+  .med-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(10,124,110,0.12); border-color: var(--mint); }
+  .med-card-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1rem;
+  }
+  .med-card h3 { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.3rem; }
+  .med-card .generic-of { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
+  .price-row {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--teal-pale);
+    border-radius: 10px; padding: 0.7rem 0.9rem;
+  }
+  .our-price { font-size: 1.2rem; font-weight: 700; color: var(--teal); }
+  .old-price { font-size: 0.8rem; color: var(--muted); text-decoration: line-through; }
+  .discount-pill {
+    background: #d4f5e9; color: #0a6e50;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 3px 9px; border-radius: 20px;
+  }
+
+  /* ── WHY CHOOSE ── */
+  .why-section {
+    background: var(--dark);
+    color: white;
+  }
+  .why-section h2 { color: white; }
+  .why-section .section-sub { color: rgba(255,255,255,0.55); }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px; padding: 2rem;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .why-card:hover { background: rgba(10,124,110,0.2); border-color: rgba(10,168,143,0.4); }
+  .why-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .why-card h3 { font-size: 1rem; font-weight: 600; color: white; margin-bottom: 0.6rem; }
+  .why-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { background: var(--teal-pale); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .testi-card {
+    background: white; border-radius: 18px; padding: 2rem;
+    box-shadow: 0 4px 20px rgba(10,124,110,0.07);
+    border: 1px solid rgba(10,124,110,0.1);
+  }
+  .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+  .testi-text { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 0.9rem;
+  }
+  .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--dark); }
+  .testi-meta { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── SAVINGS CALCULATOR ── */
+  .calc-section { background: white; }
+  .calc-box {
+    background: var(--dark);
+    border-radius: 24px; padding: 3rem;
+    max-width: 720px; margin: 0 auto;
+    color: white; text-align: center;
+  }
+  .calc-box h2 { color: white; font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .calc-sub { color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-bottom: 2rem; }
+  .calc-input-row {
+    display: flex; gap: 1rem; align-items: center; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .calc-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0.4rem; text-align: left; }
+  .calc-input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white; font-family: inherit; font-size: 1.1rem;
+    padding: 0.8rem 1.2rem; border-radius: 10px;
+    width: 180px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .calc-input:focus { border-color: var(--teal-light); }
+  .calc-result {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    border-radius: 14px; padding: 1.5rem 2rem;
+    font-size: 1rem;
+  }
+  .result-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 700;
+    margin: 0.3rem 0;
+  }
+  .result-sub { font-size: 0.85rem; opacity: 0.85; }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    padding: 80px 8vw;
+    text-align: center; color: white;
+  }
+  .cta-band h2 { color: white; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 1rem; }
+  .cta-band p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 2.5rem; }
+  .btn-white {
+    background: white; color: var(--teal);
+    border: none; cursor: pointer;
+    padding: 0.9rem 2.2rem; border-radius: 10px;
+    font-size: 1rem; font-weight: 700;
+    font-family: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.22); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.6);
+    padding: 60px 8vw 30px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: white; font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .footer-logo span { color: var(--teal-light); }
+  .footer-desc { font-size: 0.85rem; line-height: 1.65; max-width: 280px; }
+  .footer-col h4 { color: white; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.05em; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--teal-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.78rem;
+  }
+  .footer-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.3); max-width: 480px; line-height: 1.5; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  .pill-card { animation: float 4s ease-in-out infinite; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero-visual { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav ul { display: none; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; }
+    .calc-box { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">✚</div>
+    Mediva<span>Care</span>
+  </a>
+  <ul>
+    <li><a href="#medicines">Medicines</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#savings">Savings</a></li>
+    <li><a href="#contact" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span> India's Trusted Generic Medicine Provider</div>
+    <h1>Same Cure.<br><em>Fraction of the Cost.</em></h1>
+    <p class="hero-desc">Mediva Care connects you with FDA-approved generic alternatives to expensive branded medicines — identical ingredients, identical effectiveness, up to 80% cheaper.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('medicines').scrollIntoView({behavior:'smooth'})">Browse Medicines</button>
+      <button class="btn-outline" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How It Works</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">80%</div>
+        <div class="stat-label">Average Savings</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2,400+</div>
+        <div class="stat-label">Generic Medicines</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1.2M+</div>
+        <div class="stat-label">Happy Patients</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="pill-card">
+      <div class="floating-badge top">✅ Same Active Ingredient</div>
+      <p class="pill-card-title">Live Price Comparison</p>
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Metformin 500mg · 30 tablets</p>
+      <div class="price-compare">
+        <div class="med-row branded">
+          <div>
+            <div class="med-name">Glucophage® (Branded)</div>
+            <div class="med-sub">Original brand price</div>
+          </div>
+          <div class="med-price">₹480</div>
+        </div>
+        <div class="vs-divider">↓ MEDIVA GENERIC ↓</div>
+        <div class="med-row generic">
+          <div>
+            <div class="med-name">Metformin 500 (Generic)</div>
+            <div class="med-sub">Same formula · Govt approved</div>
+          </div>
+          <div style="text-align:right">
+            <div class="med-price">₹92</div>
+            <div style="margin-top:4px"><span class="save-tag">SAVE ₹388</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:0.78rem;color:var(--muted);margin-top:0.8rem;">
+        ⭐ Approved by CDSCO · Bioequivalent
+      </div>
+      <div class="floating-badge bot">💊 80% Cheaper Today</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">🏛️</span> CDSCO Approved Medicines</div>
+  <div class="trust-item"><span class="trust-icon">🔬</span> Bioequivalent Formulas</div>
+  <div class="trust-item"><span class="trust-icon">🚚</span> Free Delivery Above ₹499</div>
+  <div class="trust-item"><span class="trust-icon">🔒</span> Secure & Private Orders</div>
+  <div class="trust-item"><span class="trust-icon">📞</span> 24/7 Pharmacist Support</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="reveal">
+    <p class="section-label">Simple Process</p>
+    <h2>Get Affordable Medicine in <em>4 Easy Steps</em></h2>
+    <p class="section-sub">From prescription to delivery — we make accessing affordable healthcare the simplest thing you do today.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-icon">📋</div>
+      <h3>Upload Prescription</h3>
+      <p>Share your doctor's prescription via WhatsApp, email, or our website. Our pharmacists verify it within minutes.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <div class="step-icon">💡</div>
+      <h3>We Find Generics</h3>
+      <p>Our team identifies the best CDSCO-approved generic alternatives that match your prescribed medicine exactly.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <div class="step-icon">💳</div>
+      <h3>Choose & Pay</h3>
+      <p>Review the savings breakdown, approve the substitute, and pay securely via UPI, card, or cash on delivery.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">04</div>
+      <div class="step-icon">📦</div>
+      <h3>Fast Home Delivery</h3>
+      <p>Medicines delivered to your door within 24–48 hours in discreet, temperature-safe packaging.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEDICINES -->
+<section id="medicines">
+  <div class="reveal">
+    <p class="section-label">Our Catalogue</p>
+    <h2>Popular Generic <em>Medicines</em></h2>
+    <p class="section-sub">Trusted alternatives for the most commonly prescribed drugs — all tested, verified, and government-approved.</p>
+  </div>
+  <div class="medicines-grid">
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#e8f8f5;">❤️</div>
+      <h3>Atorvastatin 10mg</h3>
+      <div class="generic-of">Generic of Lipitor® · Cholesterol</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹68 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ strip</span></div>
+          <div class="old-price">Branded: ₹340</div>
+        </div>
+        <span class="discount-pill">80% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#fff5e6;">🩸</div>
+      <h3>Metformin 500mg</h3>
+      <div class="generic-of">Generic of Glucophage® · Diabetes</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹92 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ 30 tabs</span></div>
+          <div class="old-price">Branded: ₹480</div>
+        </div>
+        <span class="discount-pill">81% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#f0f0ff;">🧠</div>
+      <h3>Amlodipine 5mg</h3>
+      <div class="generic-of">Generic of Norvasc® · Blood Pressure</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹55 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ strip</span></div>
+          <div class="old-price">Branded: ₹280</div>
+        </div>
+        <span class="discount-pill">80% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#fff0f5;">💊</div>
+      <h3>Omeprazole 20mg</h3>
+      <div class="generic-of">Generic of Prilosec® · Acidity / GERD</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹48 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ strip</span></div>
+          <div class="old-price">Branded: ₹220</div>
+        </div>
+        <span class="discount-pill">78% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#e8fff0;">🦴</div>
+      <h3>Pantoprazole 40mg</h3>
+      <div class="generic-of">Generic of Pantodac® · Gastric Ulcer</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹62 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ strip</span></div>
+          <div class="old-price">Branded: ₹310</div>
+        </div>
+        <span class="discount-pill">80% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#fffbe6;">🌿</div>
+      <h3>Cetirizine 10mg</h3>
+      <div class="generic-of">Generic of Zyrtec® · Allergy</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹28 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ strip</span></div>
+          <div class="old-price">Branded: ₹145</div>
+        </div>
+        <span class="discount-pill">81% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#f5eeff;">🔋</div>
+      <h3>Sertraline 50mg</h3>
+      <div class="generic-of">Generic of Zoloft® · Depression / Anxiety</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹120 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ strip</span></div>
+          <div class="old-price">Branded: ₹580</div>
+        </div>
+        <span class="discount-pill">79% OFF</span>
+      </div>
+    </div>
+
+    <div class="med-card reveal">
+      <div class="med-card-icon" style="background:#e6f0ff;">🫁</div>
+      <h3>Salbutamol 100mcg</h3>
+      <div class="generic-of">Generic of Ventolin® · Asthma / COPD</div>
+      <div class="price-row">
+        <div>
+          <div class="our-price">₹85 <span style="font-size:0.72rem;font-weight:400;color:var(--muted)">/ inhaler</span></div>
+          <div class="old-price">Branded: ₹380</div>
+        </div>
+        <span class="discount-pill">78% OFF</span>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <button class="btn-primary">View All 2,400+ Medicines →</button>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-section" id="why">
+  <div class="reveal">
+    <p class="section-label" style="color:var(--mint)">Why Mediva Care</p>
+    <h2>Healthcare Should Never Be a <em style="color:var(--teal-light)">Luxury</em></h2>
+    <p class="section-sub">We're on a mission to make quality medicine accessible to every Indian family — regardless of income.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-card-icon">🔬</div>
+      <h3>Chemically Identical</h3>
+      <p>Generic medicines contain the same active ingredient, same dosage, same route of administration. The only difference is the price tag — not the cure.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-card-icon">🏛️</div>
+      <h3>Government Approved</h3>
+      <p>Every medicine on our platform is CDSCO-licensed. We source exclusively from GMP-certified manufacturers registered with the Drugs Controller General of India.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-card-icon">👨‍⚕️</div>
+      <h3>Expert Pharmacist Review</h3>
+      <p>Our registered pharmacists review every prescription, confirm the generic match, and answer all your questions — available 24/7 via chat or call.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-card-icon">📉</div>
+      <h3>Up to 80% Savings</h3>
+      <p>Branded medicines spend millions on marketing. Generics don't. We pass 100% of those savings directly to you, every time you order.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-card-icon">🌡️</div>
+      <h3>Cold-Chain Storage</h3>
+      <p>Temperature-sensitive medicines like insulin and biologics are stored and delivered in certified cold-chain packaging to preserve efficacy.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-card-icon">♻️</div>
+      <h3>Subscription Refills</h3>
+      <p>Set up auto-refills for chronic medications. Never run out of your daily medicines — we remind you, pack it, and deliver before you need it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SAVINGS CALCULATOR -->
+<section class="calc-section" id="savings">
+  <div class="calc-box reveal">
+    <h2>Calculate Your Savings</h2>
+    <p class="calc-sub">Enter the MRP of your current branded medicine and see how much you save with Mediva Care</p>
+    <div class="calc-input-row">
+      <div>
+        <div class="calc-label">Monthly medicine spend (₹)</div>
+        <input class="calc-input" type="number" id="spendInput" placeholder="e.g. 2000" oninput="calcSavings()" min="0">
+      </div>
+      <div style="padding-top:1.5rem;font-size:1.5rem;color:rgba(255,255,255,0.3)">→</div>
+      <div>
+        <div class="calc-label">Your savings per month</div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:0.8rem 1.2rem;width:180px;text-align:center;">
+          <span id="savingsResult" style="font-size:1.5rem;font-weight:700;color:var(--teal-light)">₹0</span>
+        </div>
+      </div>
+    </div>
+    <div class="calc-result" id="calcResult" style="display:none;">
+      <div style="font-size:0.9rem;opacity:0.85;">With Mediva Care you save</div>
+      <div class="result-big" id="annualSavings">₹0</div>
+      <div class="result-sub">per year — enough for a family vacation! 🎉</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="reveal">
+    <p class="section-label">Real Stories</p>
+    <h2>Families Who Saved Big with <em>Mediva Care</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"My father is diabetic and hypertensive. His monthly medicine bill used to be ₹4,200. After switching to Mediva Care's generics, it's just ₹840. Same medicines, literally. We're saving over ₹40,000 a year."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RM</div>
+        <div>
+          <div class="testi-name">Rajesh Mehra</div>
+          <div class="testi-meta">Son of patient · Pune</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"As a nurse, I was skeptical about generic medicines. But Mediva Care showed me the bioequivalence reports. Now I recommend it to all my patients. The savings are real and the quality is the same."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SP</div>
+        <div>
+          <div class="testi-name">Sunita Pillai</div>
+          <div class="testi-meta">Registered Nurse · Chennai</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★☆</div>
+      <p class="testi-text">"Ordered my cholesterol and thyroid medicines. WhatsApp prescription upload took 2 minutes, pharmacist called to confirm in 10 minutes, medicine delivered next morning. 79% cheaper. Unbelievable."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AK</div>
+        <div>
+          <div class="testi-name">Arun Kulkarni</div>
+          <div class="testi-meta">Software Engineer · Bengaluru</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band" id="contact">
+  <div class="reveal">
+    <h2>Start Saving on Your Medicines Today</h2>
+    <p>Upload your prescription on WhatsApp and our pharmacist will send you a free savings report within 30 minutes.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center;">
+      <button class="btn-white">📱 WhatsApp Us: +91 98765 43210</button>
+      <button class="btn-outline" style="border-color:rgba(255,255,255,0.5);color:white;" onmouseover="this.style.background='rgba(255,255,255,0.15)'" onmouseout="this.style.background='transparent'">📧 hello@medivacare.in</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Mediva<span>Care</span></div>
+      <p class="footer-desc">Making affordable, quality generic medicines accessible to every Indian household. Approved. Trusted. Delivered.</p>
+      <div style="margin-top:1.2rem;font-size:0.8rem;color:rgba(255,255,255,0.3);">
+        📍 Mediva Care Pvt. Ltd., Bangalore, Karnataka 560001<br>
+        Drug License No.: KA-20B-XXXXX
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#medicines">Medicine Catalogue</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#why">Why Generic?</a></li>
+        <li><a href="#savings">Savings Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#">Diabetes Medicines</a></li>
+        <li><a href="#">Blood Pressure</a></li>
+        <li><a href="#">Cholesterol</a></li>
+        <li><a href="#">Antibiotics</a></li>
+        <li><a href="#">Mental Health</a></li>
+        <li><a href="#">Vitamins & Supplements</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Prescription Guide</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2024 Mediva Care Pvt. Ltd. All rights reserved.</div>
+    <div class="footer-disclaimer">⚕️ Disclaimer: All medicines are dispensed only against valid prescriptions by licensed pharmacists. Generic medicines are bioequivalent to branded medicines as certified by CDSCO. Consult your doctor before switching medications.</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Savings calculator
+  function calcSavings() {
+    const spend = parseFloat(document.getElementById('spendInput').value) || 0;
+    const savings = Math.round(spend * 0.80);
+    const annual = savings * 12;
+    document.getElementById('savingsResult').textContent = '₹' + savings.toLocaleString('en-IN');
+    const resultEl = document.getElementById('calcResult');
+    if (spend > 0) {
+      resultEl.style.display = 'block';
+      document.getElementById('annualSavings').textContent = '₹' + annual.toLocaleString('en-IN');
+    } else {
+      resultEl.style.display = 'none';
+    }
+  }
+</script>
+</body>
+</html>
