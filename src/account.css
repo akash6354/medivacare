@@ -1,0 +1,80 @@
+.account-page { min-height: 100vh; color: #183b33; background: #f8faf8; }
+.account-header { height: 76px; display: flex; align-items: center; justify-content: space-between; padding: 0 max(28px,calc((100% - 1160px)/2)); border-bottom: 1px solid #e8eeea; background: #fff; }
+.account-top-nav { display: flex; align-items: center; gap: 19px; }
+.account-top-nav a { color: #63826c; font-size: 10px; text-decoration: none; }
+.account-top-nav a:hover { color: #34775b; }
+.account-main { width: min(1160px,calc(100% - 56px)); min-height: calc(100vh - 153px); margin: 0 auto; padding: 48px 0 56px; }
+.account-main--auth { display: flex; align-items: center; justify-content: center; }
+.auth-card { width: min(430px,100%); padding: 33px 35px 27px; border: 1px solid #e6ede8; border-radius: 7px; background: #fff; box-shadow: 0 12px 38px rgba(38,77,55,.045); }
+.auth-kicker { color: #76927f; font-size: 8px; letter-spacing: .15em; font-weight: 700; }
+.auth-card h1,.profile-heading h1 { margin: 13px 0 8px; color: #244a39; font-family: var(--display); font-size: 27px; font-weight: 600; letter-spacing: -.05em; }
+.auth-intro,.profile-heading p { margin: 0; color: #839088; font-size: 10px; line-height: 1.75; }
+.account-form { display: grid; gap: 14px; margin-top: 23px; }
+.account-form label,.address-fields label { display: grid; gap: 7px; color: #60796a; font-size: 10px; font-weight: 600; }
+.account-form input,.address-fields input,.address-fields select { width: 100%; height: 40px; padding: 0 11px; border: 1px solid #e2eae4; border-radius: 4px; outline: none; color: #315843; background: #fff; font: inherit; font-size: 11px; font-weight: 400; }
+.account-form input:focus,.address-fields input:focus,.address-fields select:focus { border-color: #83ad91; box-shadow: 0 0 0 3px rgba(117,165,130,.12); }
+.account-form input:disabled { color: #84938a; background: #f7f9f7; }
+.account-form small { color: #9aa69e; font-size: 8px; font-weight: 400; }
+.account-submit { min-height: 42px; padding: 0 16px; border: 0; border-radius: 4px; color: #fff; background: #34775b; font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; transition: background .18s ease; }
+.account-submit:hover:not(:disabled) { background: #285e47; }
+.account-submit:disabled { opacity: .65; cursor: wait; }
+.auth-switch { margin: 19px 0 0; color: #839088; font-size: 10px; text-align: center; }
+.auth-switch a { color: #40805d; font-weight: 700; }
+.auth-security-note { margin: 17px 0 0; padding-top: 13px; border-top: 1px solid #edf1ed; color: #9aa59d; font-size: 8px; line-height: 1.7; text-align: center; }
+.account-error { margin: 0; padding: 10px 12px; border: 1px solid #f0ded9; border-radius: 4px; color: #a3675d; background: #fdf7f5; font-size: 10px; line-height: 1.6; }
+.account-success { margin: 17px 0 0; padding: 10px 12px; border: 1px solid #deece1; border-radius: 4px; color: #547f60; background: #f3f8f4; font-size: 10px; }
+.account-footer { min-height: 77px; display: flex; align-items: center; justify-content: center; border-top: 1px solid #e8eeea; color: #99a59d; background: #fff; font-size: 9px; }
+.account-main--profile { padding-top: 42px; }
+.profile-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid #e8eeea; }
+.profile-heading h1 { margin: 9px 0 5px; font-size: 30px; }
+.quiet-button { padding: 8px 10px; border: 1px solid #e5ece6; border-radius: 4px; color: #5e7d67; background: #fff; font: inherit; font-size: 9px; cursor: pointer; }
+.quiet-button:hover:not(:disabled) { border-color: #bfd2c2; background: #f8fbf8; }
+.quiet-button:disabled { opacity: .55; cursor: wait; }
+.quiet-button--danger { color: #a96d61; }
+.profile-grid { display: grid; grid-template-columns: .82fr 1.18fr; align-items: start; gap: 16px; margin-top: 22px; }
+.profile-panel { min-width: 0; padding: 21px; border: 1px solid #e6ede8; border-radius: 6px; background: #fff; }
+.profile-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 15px; border-bottom: 1px solid #eef2ef; }
+.profile-panel-heading h2 { margin: 6px 0 0; color: #315440; font-family: var(--display); font-size: 17px; font-weight: 700; letter-spacing: -.03em; }
+.profile-panel .account-form { margin-top: 17px; }
+.saved-address { padding: 14px 0; border-bottom: 1px solid #edf1ee; }
+.saved-address:last-child { padding-bottom: 0; border-bottom: 0; }
+.saved-address-heading { display: flex; align-items: center; gap: 9px; color: #42614c; font-size: 10px; }
+.default-address-badge { padding: 3px 7px; border-radius: 3px; color: #598267; background: #edf5ee; font-size: 8px; }
+.saved-address p { margin: 8px 0 10px; color: #829087; font-size: 9px; line-height: 1.8; }
+.saved-address-actions { display: flex; gap: 7px; }
+.address-list { display: grid; }
+.address-empty { display: grid; justify-items: center; gap: 7px; padding: 36px 10px 18px; color: #8a978e; text-align: center; }
+.address-empty strong { color: #54705d; font-family: var(--display); font-size: 12px; }
+.address-empty span { font-size: 9px; }
+.address-form { display: grid; gap: 13px; margin: 15px 0 4px; padding: 14px; border: 1px solid #e9efea; border-radius: 5px; background: #fbfcfb; }
+.address-form-heading { display: flex; align-items: center; justify-content: space-between; }
+.address-form-heading h3 { margin: 0; color: #45634e; font-family: var(--display); font-size: 13px; }
+.address-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.address-fields label>span { color: #9aa69e; font-weight: 400; }
+.address-field-wide { grid-column: 1 / -1; }
+.address-fields input,.address-fields select { height: 37px; }
+.default-address-toggle { display: flex; align-items: center; gap: 8px; color: #728279; font-size: 9px; }
+.default-address-toggle input { accent-color: #40805d; }
+.address-save { justify-self: start; min-width: 125px; }
+.account-session-note { margin: 22px 0 0; color: #a0aaa3; font-size: 8px; }
+.account-loading { height: 380px; margin-top: 20px; border-radius: 6px; background: linear-gradient(100deg,#f0f4f0 20%,#f8faf8 38%,#f0f4f0 62%); background-size: 200% 100%; animation: account-shimmer 1.2s linear infinite; }
+@keyframes account-shimmer { to { background-position-x: -200%; } }
+
+@media(max-width:800px) { .profile-grid { grid-template-columns: 1fr; } }
+@media(max-width:560px) {
+  .account-header { height: 66px; padding: 0 18px; }
+  .account-top-nav { gap: 9px; }
+  .account-top-nav a { font-size: 8px; }
+  .account-main { width: calc(100% - 36px); min-height: calc(100vh - 136px); padding: 30px 0 40px; }
+  .auth-card { padding: 25px 20px 22px; }
+  .auth-card h1 { font-size: 24px; }
+  .profile-heading { align-items: flex-start; }
+  .profile-heading h1 { font-size: 25px; }
+  .profile-heading>.quiet-button { flex: 0 0 auto; }
+  .profile-panel { padding: 15px; }
+  .address-fields { grid-template-columns: 1fr; }
+  .address-field-wide { grid-column: auto; }
+  .account-footer { min-height: 70px; padding: 0 15px; font-size: 8px; text-align: center; }
+}
+
+@media(prefers-reduced-motion:reduce) { .account-loading { animation:none; } .account-submit { transition:none; } }

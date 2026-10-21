@@ -1,0 +1,137 @@
+.catalog-page { min-height: 100vh; color: #183b33; background: #f8faf8; }
+.catalog-header { height: 76px; border-bottom: 1px solid #e8eeea; background: #fff; }
+.catalog-header-inner { width: min(1160px,calc(100% - 56px)); height: 100%; display: flex; align-items: center; justify-content: space-between; margin: auto; }
+.catalog-header nav { display: flex; gap: 30px; margin-left: 80px; color: #829088; font-size: 12px; }
+.catalog-header nav a:hover,.catalog-header nav .catalog-nav-active { color: #2b6b4f; }
+.catalog-header nav .catalog-nav-active { font-weight: 700; }
+.catalog-demo-note { display: inline-flex; align-items: center; gap: 8px; color: #8b8a79; font-size: 10px; }
+.catalog-demo-note span { width: 7px; height: 7px; border-radius: 50%; background: #c6a660; box-shadow: 0 0 0 3px #f7f1e4; }
+.catalog-account-link { color: #52765e; font-size: 10px; font-weight: 600; }
+.catalog-main { width: min(1160px,calc(100% - 56px)); min-height: calc(100vh - 153px); margin: 0 auto; padding: 52px 0 70px; }
+.catalog-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 25px; }
+.catalog-heading-row h1 { margin: 13px 0 8px; color: #204535; font-family: var(--display); font-size: clamp(30px,4vw,42px); font-weight: 600; letter-spacing: -.055em; }
+.catalog-heading-row p { margin: 0; color: #7c8b83; font-size: 12px; line-height: 1.7; }
+.catalog-data-label { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 4px; color: #938a73; font-size: 10px; }
+.catalog-data-label span,.catalog-safety-note>span { width: 15px; height: 15px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #cabb98; border-radius: 50%; font-family: Georgia,serif; font-size: 9px; font-style: italic; }
+.catalog-search { height: 53px; display: flex; align-items: center; gap: 12px; margin-top: 28px; padding: 5px 6px 5px 16px; border: 1px solid #e5ece7; border-radius: 5px; background: #fff; box-shadow: 0 5px 20px rgba(38,77,55,.035); }
+.catalog-search>span { color: #7f9e8d; font-size: 24px; line-height: 1; }
+.catalog-search input { flex: 1; min-width: 0; border: 0; outline: 0; color: #365948; background: transparent; font: inherit; font-size: 11px; }
+.catalog-search input::placeholder { color: #a7b3ac; }
+.catalog-search button,.catalog-primary-link { height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0 18px; border: 0; border-radius: 4px; color: #fff; background: #33775a; font: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
+.catalog-search button:hover,.catalog-primary-link:hover { background: #265e45; }
+.catalog-controls { display: flex; align-items: end; gap: 12px; margin: 22px 0 19px; }
+.catalog-controls label { display: grid; gap: 7px; color: #8a9890; font-size: 9px; }
+.catalog-controls select { min-width: 145px; height: 36px; padding: 0 30px 0 10px; border: 1px solid #e5ece7; border-radius: 4px; color: #4b6956; background-color: #fff; font: inherit; font-size: 10px; }
+.catalog-result-count { margin: 0 0 10px auto; color: #8d9a92; font-size: 10px; }
+.catalog-card-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.medicine-card { overflow: hidden; border: 1px solid #e6ede8; border-radius: 6px; background: #fff; transition: box-shadow .18s ease,transform .18s ease; }
+.medicine-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(36,76,53,.075); }
+.medicine-card-art { height: 102px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(ellipse at center,#f8fcf7 0,#f1f7f1 61%,#edf4ed 100%); }
+.demo-capsule { position: relative; width: 24px; height: 62px; display: block; overflow: hidden; border: 1px solid rgba(62,108,77,.13); border-radius: 20px; background: linear-gradient(to bottom,#fff 0 50%,#7fae8b 50% 100%); box-shadow: 6px 7px 12px rgba(43,88,56,.15); transform: rotate(38deg); }
+.demo-capsule i { position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: rgba(51,96,66,.25); }
+.medicine-card-body { padding: 15px 16px 13px; }
+.medicine-card-flags { min-height: 19px; display: flex; flex-wrap: wrap; gap: 5px; }
+.synthetic-tag,.stock-tag,.rx-tag { display: inline-flex; align-items: center; min-height: 17px; padding: 2px 6px; border-radius: 3px; font-size: 7px; line-height: 1.35; }
+.synthetic-tag { color: #927843; background: #f7f2e6; }
+.stock-tag--out { color: #a47c68; background: #faf0eb; }
+.rx-tag { color: #817d9c; background: #f1f0f7; }
+.medicine-name { display: block; margin-top: 9px; color: #315440; font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: -.025em; }
+.medicine-name:hover { color: #4d8a68; }
+.medicine-form { display: block; margin-top: 5px; color: #8a9890; font-size: 9px; }
+.medicine-ingredients { min-height: 30px; margin: 12px 0 10px; color: #79877f; font-size: 9px; line-height: 1.65; }
+.medicine-price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid #eef2ef; }
+.medicine-price-row>div { display: flex; align-items: baseline; gap: 7px; }
+.medicine-price-row strong { color: #315a43; font-family: var(--display); font-size: 16px; }
+.medicine-price-row del { color: #a5afa8; font-size: 9px; }
+.medicine-price-row>span { color: #9aa79f; font-size: 8px; white-space: nowrap; }
+.medicine-details-link { display: flex; justify-content: space-between; margin-top: 11px; color: #4d8060; font-size: 9px; font-weight: 600; }
+.medicine-details-link span { font-size: 14px; line-height: 10px; }
+.catalog-message { display: grid; justify-items: center; gap: 8px; padding: 52px 20px; border: 1px dashed #dfe8e1; border-radius: 6px; color: #829087; background: #fff; text-align: center; }
+.catalog-message strong { color: #486653; font-family: var(--display); font-size: 15px; }
+.catalog-message span { font-size: 11px; }
+.catalog-message--error strong { color: #9c675e; }
+.catalog-skeleton { height: 290px; border-radius: 6px; background: linear-gradient(100deg,#f0f4f0 20%,#f8faf8 38%,#f0f4f0 62%); background-size: 200% 100%; animation: catalog-shimmer 1.2s linear infinite; }
+@keyframes catalog-shimmer { to { background-position-x: -200%; } }
+.catalog-pagination { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 27px 0 0; color: #85938a; font-size: 10px; }
+.catalog-pagination button { padding: 9px 13px; border: 1px solid #e3eae4; border-radius: 4px; color: #4f715a; background: #fff; font: inherit; cursor: pointer; }
+.catalog-pagination button:disabled { opacity: .45; cursor: default; }
+.catalog-safety-note { display: flex; align-items: flex-start; gap: 10px; margin-top: 24px; padding: 14px 16px; border: 1px solid #eee8d9; border-radius: 5px; color: #898472; background: #fcfaf5; }
+.catalog-safety-note>span { flex: 0 0 auto; margin-top: 1px; color: #a18f65; }
+.catalog-safety-note p { margin: 0; font-size: 9px; line-height: 1.75; }
+.catalog-footer { min-height: 77px; display: flex; align-items: center; gap: 15px; padding: 0 max(28px,calc((100% - 1160px)/2)); border-top: 1px solid #e9efea; background: #fff; }
+.catalog-footer .brand-mark { width: 26px; height: 26px; }
+.catalog-footer .brand-name { font-size: 17px; }
+.catalog-footer>span { padding-left: 14px; border-left: 1px solid #e7ece8; color: #98a49c; font-size: 9px; }
+.catalog-back-link { display: inline-flex; margin-bottom: 28px; color: #5c8168; font-size: 11px; }
+.catalog-back-link:hover { color: #2b664a; }
+.product-detail { display: grid; grid-template-columns: minmax(260px,.75fr) 1.25fr; gap: 48px; padding: 28px; border: 1px solid #e6ede8; border-radius: 7px; background: #fff; }
+.product-detail-art { min-height: 390px; display: flex; align-items: center; justify-content: center; border-radius: 5px; background: radial-gradient(ellipse at center,#f8fcf7 0,#eff6ef 70%,#ebf2eb 100%); }
+.demo-capsule--large { width: 48px; height: 135px; border-radius: 30px; box-shadow: 11px 14px 20px rgba(43,88,56,.15); }
+.product-detail-copy { align-self: center; }
+.detail-category { margin: 14px 0 5px; color: #829287; font-size: 10px; }
+.product-detail-copy h1 { margin: 0; color: #214936; font-family: var(--display); font-size: clamp(26px,3vw,37px); font-weight: 600; letter-spacing: -.05em; }
+.detail-description { margin: 13px 0 22px; color: #849188; font-size: 11px; line-height: 1.75; }
+.detail-facts { margin: 0; border-top: 1px solid #edf1ee; }
+.detail-facts>div { display: grid; grid-template-columns: 155px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid #edf1ee; }
+.detail-facts dt { color: #96a198; font-size: 9px; }
+.detail-facts dd { display: grid; gap: 5px; margin: 0; color: #4d6e58; font-size: 9px; line-height: 1.5; }
+.detail-price { display: flex; align-items: baseline; gap: 10px; margin-top: 20px; }
+.detail-price strong { color: #315a43; font-family: var(--display); font-size: 23px; }
+.detail-price del { color: #a5afa8; font-size: 11px; }
+.detail-price span { margin-left: auto; color: #929f97; font-size: 9px; }
+.detail-disclaimer { margin: 13px 0 0; color: #a08566; font-size: 9px; line-height: 1.7; }
+.detail-cart-action { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.detail-cart-action>span { color: #66816d; font-size: 9px; }
+.catalog-add-button { min-height: 39px; padding: 0 16px; border: 0; border-radius: 4px; color: #fff; background: #34775b; font: inherit; font-size: 10px; font-weight: 600; cursor: pointer; }
+.catalog-add-button:hover:not(:disabled) { background: #285e47; }
+.catalog-add-button:disabled { opacity: .58; cursor: not-allowed; }
+.detail-skeleton { height: 410px; border-radius: 7px; background: linear-gradient(100deg,#f0f4f0 20%,#f8faf8 38%,#f0f4f0 62%); background-size: 200% 100%; animation: catalog-shimmer 1.2s linear infinite; }
+.catalog-empty-page { width: min(700px,calc(100% - 48px)); min-height: 70vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 12px; margin: auto; }
+.catalog-empty-page h1 { margin: 3px 0; color: #214936; font-family: var(--display); font-size: 34px; }
+.catalog-empty-page p { color: #819087; font-size: 12px; }
+.catalog-primary-link { text-decoration: none; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); border: 0; }
+
+@media(max-width:850px) {
+  .catalog-card-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .product-detail { grid-template-columns: .7fr 1.3fr; gap: 26px; padding: 20px; }
+  .product-detail-art { min-height: 330px; }
+  .detail-facts>div { grid-template-columns: 125px 1fr; }
+}
+@media(max-width:600px) {
+  .catalog-header { height: 66px; }
+  .catalog-header-inner,.catalog-main { width: calc(100% - 36px); }
+  .catalog-header nav { gap: 14px; margin-left: 8px; font-size: 10px; }
+  .catalog-demo-note { display: none; }
+  .catalog-header nav { margin-right: 12px; }
+  .catalog-main { min-height: calc(100vh - 143px); padding: 35px 0 45px; }
+  .catalog-heading-row { display: block; }
+  .catalog-heading-row h1 { font-size: 31px; }
+  .catalog-data-label { margin-top: 14px; }
+  .catalog-search { margin-top: 20px; }
+  .catalog-search input { font-size: 9px; }
+  .catalog-search button { padding: 0 12px; font-size: 10px; }
+  .catalog-controls { align-items: stretch; flex-wrap: wrap; gap: 9px; }
+  .catalog-controls label { flex: 1 1 30%; min-width: 100px; }
+  .catalog-controls select { width: 100%; min-width: 0; padding-left: 7px; font-size: 9px; }
+  .catalog-result-count { width: 100%; margin: 1px 0 0; }
+  .catalog-card-grid { grid-template-columns: 1fr; gap: 12px; }
+  .medicine-card { display: grid; grid-template-columns: 95px 1fr; }
+  .medicine-card-art { height: 100%; min-height: 200px; }
+  .medicine-card-body { padding: 12px; }
+  .medicine-name { font-size: 13px; }
+  .medicine-price-row { flex-wrap: wrap; }
+  .catalog-pagination { gap: 10px; }
+  .catalog-pagination button { padding: 8px 9px; font-size: 9px; }
+  .catalog-footer { min-height: 70px; flex-wrap: wrap; gap: 8px; padding: 12px 18px; }
+  .catalog-footer .brand-mark { width: 23px; height: 23px; }
+  .catalog-footer .brand-name { font-size: 15px; }
+  .catalog-footer>span { font-size: 8px; }
+  .product-detail { grid-template-columns: 1fr; gap: 21px; padding: 14px; }
+  .product-detail-art { min-height: 200px; }
+  .detail-facts>div { grid-template-columns: 112px 1fr; }
+  .detail-price { flex-wrap: wrap; }
+  .detail-price span { width: 100%; margin: -3px 0 0; }
+}
+
+@media(prefers-reduced-motion:reduce) { .catalog-skeleton,.detail-skeleton { animation:none; } .medicine-card { transition:none; } }
