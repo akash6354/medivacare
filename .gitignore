@@ -2,8 +2,3 @@ node_modules/
 dist/
 .env
 .env.*
-<<<<<<< HEAD
-!.env.example
-=======
-!.env.example
->>>>>>> 6b383e6c69b5836c5f3b3a66f0586cb9e91c87a7
