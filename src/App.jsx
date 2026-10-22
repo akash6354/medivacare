@@ -10,7 +10,7 @@ import { AdminDataPage } from "./adminData.jsx";
 import { useCart } from "./CartContext.jsx";
 import { AdminSupportPage, InfoPage, SupportPage } from "./support.jsx";
 
-const apiBase = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000/api/v1";
+const apiBase = "https://medivacare-backend.vercel.app/api/v1";
 
 function ApiStatus() {
   const [status, setStatus] = useState("checking");
